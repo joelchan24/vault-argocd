@@ -4,7 +4,7 @@ metadata:
   name: vault
 spec:
   destination:
-    name: ''
+    name: 'default'
     namespace: vault
     server: 'https://kubernetes.default.svc'
   source:
