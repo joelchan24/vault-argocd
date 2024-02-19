@@ -4,13 +4,13 @@ metadata:
   name: vault
 spec:
   destination:
-    namespace: vault
+    namespace: default
     server: 'https://kubernetes.default.svc'
   project: default
   source:
     path: .
     repoURL: 'https://github.com/joelchan24/vault-argocd.git'
-    targetRevision: HEAD
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true
