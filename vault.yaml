@@ -23,9 +23,17 @@ spec:
         image: hashicorp/vault:latest
         args:
         - "server"
-        - "-config=/vault/config/vault.hcl"
+        env:
+        - name: SKIP_CHOWN
+          value: "true"
+        - name: SKIP_SETCAP
+          value: "true"
         ports:
         - containerPort: 8200
+        securityContext:
+          capabilities:
+            add:
+            - IPC_LOCK
         volumeMounts:
         - name: vault-config
           mountPath: /vault/config
@@ -56,6 +64,7 @@ metadata:
 data:
   vault.hcl: |-
     ui = true
+    disable_mlock = true
     storage "file" {
       path = "/vault/data"
     }
